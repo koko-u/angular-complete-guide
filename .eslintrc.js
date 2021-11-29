@@ -1,24 +1,20 @@
-{
-  "root": true,
-  "ignorePatterns": [
-    "projects/**/*"
+module.exports = {
+  root: true,
+  ignorePatterns: [
+    "projects/**/*",
   ],
-  "overrides": [
+  overrides: [
     {
-      "files": [
-        "*.ts"
-      ],
-      "parserOptions": {
-        "project": [
-          "tsconfig.json"
-        ],
-        "createDefaultProgram": true
+      files: [ "*.ts" ],
+      parserOptions: {
+        project: [ "tsconfig.json" ],
+        createDefaultProgram: true
       },
-      "extends": [
+      extends: [
         "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@angular-eslint/template/process-inline-templates",
       ],
-      "rules": {
+      rules: {
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -38,13 +34,11 @@
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
+      files: [ "*.html" ],
+      extends: [
         "plugin:@angular-eslint/template/recommended"
       ],
-      "rules": {}
+      rules: {}
     }
   ]
 }
