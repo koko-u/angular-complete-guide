@@ -13,6 +13,7 @@ module.exports = {
       extends: [
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
+        "prettier"
       ],
       rules: {
         "@angular-eslint/directive-selector": [
