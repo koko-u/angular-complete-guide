@@ -1,0 +1,16 @@
+<div class="row mt-4">
+  <div class="col-xs-10">
+    <acg-shopping-list-edit></acg-shopping-list-edit>
+  </div>
+  <div class="col-xs-10">
+    <ul class="list-group">
+      <li
+        class="list-group-item clickable hover-gray"
+        *ngFor="let ingredient of ingredients"
+      >
+        {{ ingredient.name }} ({{ ingredient.amount }})
+      </li>
+    </ul>
+  </div>
+
+</div>

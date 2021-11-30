@@ -1,0 +1,23 @@
+<ng-container *ngIf="recipe;else err">
+  <div class="card hover-gray clickable">
+    <div class="row g-0 align-items-center">
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ recipe.name }}</h5>
+          <p class="card-text">{{ recipe.description }}</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <img
+          [src]="recipe.imagePath"
+          class="img-fluid rounded-start"
+          [alt]="recipe.name"
+        >
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #err>
+ERROR! recipe-item component must have recipe argument
+</ng-template>
