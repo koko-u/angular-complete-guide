@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { Recipe } from '../../../models/recipe.model'
+import { RecipeService } from '../../recipe.service'
+import { map, Observable } from 'rxjs'
 
 @Component({
   selector: 'acg-recipe-item[recipe]',
@@ -10,17 +12,17 @@ export class RecipeItemComponent {
   @Input()
   recipe?: Recipe
 
-  @Input()
-  active: boolean = false
+  active: Observable<boolean>
 
-  @Output()
-  selectRecipe = new EventEmitter<Recipe>()
-
-  constructor() {}
+  constructor(private recipeService: RecipeService) {
+    this.active = recipeService.currentRecipe$.pipe(
+      map((currentRecipe) => currentRecipe === this.recipe)
+    )
+  }
 
   onClick() {
     if (this.recipe) {
-      this.selectRecipe.emit(this.recipe)
+      this.recipeService.select(this.recipe)
     }
   }
 }

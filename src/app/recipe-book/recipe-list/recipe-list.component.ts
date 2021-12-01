@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { Recipe } from '../../models/recipe.model'
-import { of } from 'rxjs'
-import { mockRecipes } from '../../data/mock-recipes'
+import { RecipeService } from '../recipe.service'
 
 @Component({
   selector: 'acg-recipe-list',
@@ -11,19 +10,11 @@ import { mockRecipes } from '../../data/mock-recipes'
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = []
 
-  @Output()
-  selectRecipe = new EventEmitter<Recipe>()
-
-  @Input()
-  currentRecipe?: Recipe
-
-  constructor() {}
+  constructor(private recipeService: RecipeService) {}
 
   ngOnInit(): void {
-    of(mockRecipes).subscribe((recipes) => (this.recipes = recipes))
-  }
-
-  onSelectRecipe(recipe: Recipe) {
-    this.selectRecipe.emit(recipe)
+    this.recipeService
+      .getAllRecipes()
+      .subscribe((recipes) => (this.recipes = recipes))
   }
 }
