@@ -13,7 +13,11 @@
           class="list-group-item list-group-item-action p-0 border-0 clickable"
           *ngFor="let recipe of recipes"
         >
-          <acg-recipe-item [recipe]="recipe"></acg-recipe-item>
+          <acg-recipe-item
+            [recipe]="recipe"
+            [active]="recipe === currentRecipe"
+            (selectRecipe)="onSelectRecipe($event)"
+          ></acg-recipe-item>
         </li>
       </ul>
     </div>

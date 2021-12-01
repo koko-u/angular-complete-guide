@@ -1,5 +1,9 @@
 <ng-container *ngIf="recipe;else err">
-  <div class="card hover-gray clickable">
+  <div
+    class="card hover-gray clickable"
+    [class.list-group-item-secondary]="active"
+    (click)="onClick()"
+  >
     <div class="row g-0 align-items-center">
       <div class="col-md-8">
         <div class="card-body">

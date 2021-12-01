@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { Recipe } from '../../../models/recipe.model'
 
 @Component({
@@ -10,5 +10,17 @@ export class RecipeItemComponent {
   @Input()
   recipe?: Recipe
 
+  @Input()
+  active: boolean = false
+
+  @Output()
+  selectRecipe = new EventEmitter<Recipe>()
+
   constructor() {}
+
+  onClick() {
+    if (this.recipe) {
+      this.selectRecipe.emit(this.recipe)
+    }
+  }
 }
