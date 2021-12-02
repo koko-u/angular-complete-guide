@@ -6,9 +6,15 @@
     <ul class="list-group">
       <li
         class="list-group-item clickable hover-gray"
-        *ngFor="let ingredient of ingredients"
+        *ngFor="let ingredient of ingredients$ | async"
       >
-        {{ ingredient.name }} ({{ ingredient.amount }})
+        <div class="d-flex justify-content-between">
+          <span>
+          {{ ingredient.name }} ({{ ingredient.amount }})
+          </span>
+          <button class="btn btn-danger btn-sm rounded-pill" (click)="delete(ingredient)">Delete</button>
+        </div>
+
       </li>
     </ul>
   </div>
