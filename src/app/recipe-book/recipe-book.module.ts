@@ -5,6 +5,7 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component'
 import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.component'
 import { RecipeBookComponent } from './recipe-book.component'
 import { RecipeService } from './recipe.service'
+import { CustomDirectiveModule } from '../custom-directive/custom-directive.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,7 @@ import { RecipeService } from './recipe.service'
     RecipeItemComponent,
     RecipeBookComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, CustomDirectiveModule],
   exports: [RecipeBookComponent],
   providers: [RecipeService],
 })

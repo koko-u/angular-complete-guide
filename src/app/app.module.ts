@@ -6,7 +6,8 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module'
 import { RecipeBookModule } from './recipe-book/recipe-book.module'
 
 import { AppComponent } from './app.component'
-import { HeaderComponent } from './common/header/header.component'
+import { HeaderComponent } from './common/header/header.component';
+import { CustomDirectiveModule } from './custom-directive/custom-directive.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -15,6 +16,7 @@ import { HeaderComponent } from './common/header/header.component'
     AppRoutingModule,
     ShoppingListModule,
     RecipeBookModule,
+    CustomDirectiveModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

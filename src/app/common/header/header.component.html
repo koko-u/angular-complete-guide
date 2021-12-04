@@ -45,17 +45,20 @@
           <a
             class="nav-link dropdown-toggle"
             href="#"
-            id="navbarDropdownMenuLink"
+            id="manageMenu"
             role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
+            acgDropdown
+            [dropdownMenuId]="'manageDropdownMenu'"
           >
             Manage
           </a>
 
           <ul
             class="dropdown-menu"
-            aria-labelledby="navbarDropdownMenuLink"
+            id="manageDropdownMenu"
+            aria-labelledby="manageMenu"
           >
             <li>
               <a class="dropdown-item" href="#">Save Data</a>
