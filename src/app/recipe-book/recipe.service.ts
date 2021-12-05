@@ -6,21 +6,37 @@ import { mockRecipes } from '../data/mock-recipes'
 @Injectable()
 export class RecipeService {
   private currentRecipeSubject$: BehaviorSubject<Recipe | undefined>
-  public get currentRecipe$(): Observable<Recipe | undefined> {
+
+  /**
+   * all recipes (mocking data)
+   */
+  get recipes$(): Observable<Recipe[]> {
+    return of(mockRecipes)
+  }
+
+  /**
+   * selected recipe
+   *
+   * @remarks if no recipes selected then the value is undefined
+   */
+  get currentRecipe$(): Observable<Recipe | undefined> {
     return this.currentRecipeSubject$.asObservable()
   }
 
+  /**
+   * the constructor
+   */
   constructor() {
     this.currentRecipeSubject$ = new BehaviorSubject<Recipe | undefined>(
       undefined
     )
   }
 
+  /**
+   * select the recipe
+   * @param recipe selected recipe
+   */
   select(recipe: Recipe) {
     this.currentRecipeSubject$.next(recipe)
-  }
-
-  getAllRecipes(): Observable<Recipe[]> {
-    return of(mockRecipes)
   }
 }

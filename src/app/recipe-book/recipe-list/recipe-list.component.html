@@ -11,7 +11,7 @@
       <ul class="list-group">
         <li
           class="list-group-item list-group-item-action p-0 border-0 clickable"
-          *ngFor="let recipe of recipes"
+          *ngFor="let recipe of recipes$ | async"
         >
           <acg-recipe-item [recipe]="recipe"></acg-recipe-item>
         </li>

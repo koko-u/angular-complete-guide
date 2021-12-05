@@ -1,4 +1,4 @@
-<ng-container *ngIf="recipe;else err">
+<ng-container *ngIf="currentRecipe$ | async as recipe; else err">
 
   <div class="row mt-4">
     <div class="col-xs-12">

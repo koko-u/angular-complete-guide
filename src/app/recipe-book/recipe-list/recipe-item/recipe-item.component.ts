@@ -9,20 +9,42 @@ import { map, Observable } from 'rxjs'
   styleUrls: ['./recipe-item.component.scss'],
 })
 export class RecipeItemComponent {
+  private _recipe: Recipe | undefined
+
+  /**
+   * the recipe display in the recipe list
+   */
+  get recipe(): Recipe {
+    if (this._recipe === undefined) {
+      throw new Error('no recipe attribute')
+    }
+    return this._recipe
+  }
+
+  /**
+   * set the recipe to display from parent list component
+   * @param value
+   */
   @Input()
-  recipe?: Recipe
+  set recipe(value: Recipe) {
+    this._recipe = value
+  }
 
-  active: Observable<boolean>
-
-  constructor(private recipeService: RecipeService) {
-    this.active = recipeService.currentRecipe$.pipe(
+  /**
+   * current row is active or not
+   */
+  get active$(): Observable<boolean> {
+    return this.recipeService.currentRecipe$.pipe(
       map((currentRecipe) => currentRecipe === this.recipe)
     )
   }
 
+  constructor(private recipeService: RecipeService) {}
+
+  /**
+   * select this recipe row
+   */
   onClick() {
-    if (this.recipe) {
-      this.recipeService.select(this.recipe)
-    }
+    this.recipeService.select(this.recipe)
   }
 }

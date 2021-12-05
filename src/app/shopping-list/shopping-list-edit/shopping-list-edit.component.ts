@@ -13,8 +13,17 @@ import { IngredientForm } from '../../models/ingredient.form'
   styleUrls: ['./shopping-list-edit.component.scss'],
 })
 export class ShoppingListEditComponent {
+  /**
+   * ingredient input form with name and amount
+   */
   shoppingForm: FormGroupTypeSafe<IngredientForm>
 
+  /**
+   * the constructor
+   *
+   * @param formBuilder form builder
+   * @param ingredientService ingredient service
+   */
   constructor(
     private formBuilder: FormBuilderTypeSafe,
     private ingredientService: IngredientService
@@ -25,10 +34,16 @@ export class ShoppingListEditComponent {
     })
   }
 
+  /**
+   * add ingredient from form input
+   */
   add() {
     this.ingredientService.add(this.shoppingForm.value)
   }
 
+  /**
+   * clear all ingredients
+   */
   clear() {
     this.ingredientService.clear()
   }
