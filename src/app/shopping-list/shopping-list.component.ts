@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { Ingredient } from '../models/ingredient.model'
-import { IngredientService } from '../ingredient.service'
+import { IngredientService } from '../common/services/ingredient.service'
 import { Observable } from 'rxjs'
 
 @Component({

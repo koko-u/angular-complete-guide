@@ -1,6 +1,8 @@
 /**
  * recipe property interface
  */
+import { IIngredient } from './ingredient.interface'
+
 export interface IRecipe {
   /**
    * recipe's name
@@ -16,4 +18,9 @@ export interface IRecipe {
    * recipe's image path (local assets path)
    */
   imagePath: string
+
+  /**
+   * recipe's ingredient list
+   */
+  ingredients: IIngredient[]
 }

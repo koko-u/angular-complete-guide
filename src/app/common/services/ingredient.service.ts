@@ -1,18 +1,10 @@
 import { Injectable } from '@angular/core'
-import { BehaviorSubject, map, Observable } from 'rxjs'
-import { Ingredient } from './models/ingredient.model'
-import { mockIngredients } from './data/mock-ingredients'
-import { IngredientForm } from './models/ingredient.form'
-
-function getMaxId(ingredients: Ingredient[]): number {
-  return ingredients.reduce((prev, current) => {
-    if (current.id > prev) {
-      return current.id
-    } else {
-      return prev
-    }
-  }, 0)
-}
+import { BehaviorSubject, concatMap, EMPTY, map, Observable, of } from 'rxjs'
+import { Ingredient } from '../../models/ingredient.model'
+import { mockIngredients } from '../../data/mock-ingredients'
+import { IngredientForm } from '../../models/ingredient.form'
+import { getMaxId, mergeById } from '../util'
+import { RecipeService } from './recipe.service'
 
 @Injectable()
 export class IngredientService {
@@ -32,7 +24,7 @@ export class IngredientService {
    * - create ingredients Behavior Subject
    * - connect ingredients Subject to maxId observable
    */
-  constructor() {
+  constructor(private recipeService: RecipeService) {
     this.ingredientsSubject$ = new BehaviorSubject<Ingredient[]>(
       mockIngredients
     )
@@ -72,5 +64,27 @@ export class IngredientService {
       (ingredient) => ingredient.id !== id
     )
     this.ingredientsSubject$.next(ingredients)
+  }
+
+  /**
+   * add ingredients from currentRecipe which holds RecipeService
+   *
+   */
+  addCurrentRecipe() {
+    this.recipeService.currentRecipe$
+      .pipe(
+        concatMap((recipe) => {
+          if (recipe === undefined) {
+            return EMPTY
+          } else {
+            return of(recipe.ingredients)
+          }
+        }),
+        map((ingredients) =>
+          mergeById(this.ingredientsSubject$.value, ingredients)
+        )
+      )
+      .subscribe(this.ingredientsSubject$)
+      .unsubscribe()
   }
 }

@@ -1,4 +1,5 @@
 import { IRecipe } from './recipe.interface'
+import { Ingredient } from './ingredient.model'
 
 /**
  * recipe representation
@@ -20,6 +21,11 @@ export class Recipe implements IRecipe {
   imagePath: string
 
   /**
+   * recipe's ingredient list
+   */
+  ingredients: Ingredient[]
+
+  /**
    * the constructor
    *
    * @param recipe recipe object expression
@@ -28,5 +34,8 @@ export class Recipe implements IRecipe {
     this.name = recipe.name
     this.description = recipe.description
     this.imagePath = recipe.imagePath
+    this.ingredients = recipe.ingredients.map(
+      (ingredient) => new Ingredient(ingredient)
+    )
   }
 }

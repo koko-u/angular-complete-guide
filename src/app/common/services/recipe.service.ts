@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, Observable, of } from 'rxjs'
-import { Recipe } from '../models/recipe.model'
-import { mockRecipes } from '../data/mock-recipes'
+import { Recipe } from '../../models/recipe.model'
+import { mockRecipes } from '../../data/mock-recipes'
 
 @Injectable()
 export class RecipeService {

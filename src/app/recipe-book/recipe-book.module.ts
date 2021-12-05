@@ -4,8 +4,7 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component'
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component'
 import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.component'
 import { RecipeBookComponent } from './recipe-book.component'
-import { RecipeService } from './recipe.service'
-import { CustomDirectiveModule } from '../custom-directive/custom-directive.module';
+import { CustomDirectiveModule } from '../custom-directive/custom-directive.module'
 
 @NgModule({
   declarations: [
@@ -16,6 +15,6 @@ import { CustomDirectiveModule } from '../custom-directive/custom-directive.modu
   ],
   imports: [CommonModule, CustomDirectiveModule],
   exports: [RecipeBookComponent],
-  providers: [RecipeService],
+  providers: [],
 })
 export class RecipeBookModule {}

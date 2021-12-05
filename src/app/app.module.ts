@@ -8,6 +8,8 @@ import { CustomDirectiveModule } from './custom-directive/custom-directive.modul
 
 import { AppComponent } from './app.component'
 import { HeaderComponent } from './common/header/header.component'
+import { RecipeService } from './common/services/recipe.service'
+import { IngredientService } from './common/services/ingredient.service'
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -18,7 +20,7 @@ import { HeaderComponent } from './common/header/header.component'
     RecipeBookModule,
     CustomDirectiveModule,
   ],
-  providers: [],
+  providers: [RecipeService, IngredientService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

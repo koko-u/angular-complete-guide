@@ -4,7 +4,7 @@ import {
   FormGroupTypeSafe,
 } from 'angular-typesafe-reactive-forms-helper'
 import { FormControl } from '@angular/forms'
-import { IngredientService } from '../../ingredient.service'
+import { IngredientService } from '../../common/services/ingredient.service'
 import { IngredientForm } from '../../models/ingredient.form'
 
 @Component({

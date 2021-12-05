@@ -30,7 +30,12 @@
           aria-labelledby="manageRecipeMenu"
         >
           <li>
-            <a class="dropdown-item" href="#">To Shopping List</a>
+            <a
+              class="dropdown-item"
+              (click)="addIngredientsToShoppingList($event)"
+            >
+              To Shopping List
+            </a>
           </li>
           <li>
             <a class="dropdown-item" href="#">Edit Recipe</a>
@@ -48,8 +53,18 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
-      Ingredients
+    <div class="col-xs-12 col-md-8">
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let ingredient of recipe.ingredients"
+        >
+          <span class="d-flex justify-content-between">
+            <span>{{ ingredient.name }}</span>
+            <span class="me-5">{{ ingredient.amount }}</span>
+          </span>
+        </li>
+      </ul>
     </div>
   </div>
 </ng-container>

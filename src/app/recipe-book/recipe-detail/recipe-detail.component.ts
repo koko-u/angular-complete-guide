@@ -1,7 +1,8 @@
 import { Component } from '@angular/core'
 import { Recipe } from '../../models/recipe.model'
-import { RecipeService } from '../recipe.service'
+import { RecipeService } from '../../common/services/recipe.service'
 import { Observable } from 'rxjs'
+import { IngredientService } from '../../common/services/ingredient.service'
 
 @Component({
   selector: 'acg-recipe-detail',
@@ -13,5 +14,18 @@ export class RecipeDetailComponent {
     return this.recipeService.currentRecipe$
   }
 
-  constructor(private recipeService: RecipeService) {}
+  constructor(
+    private recipeService: RecipeService,
+    private ingredientService: IngredientService
+  ) {}
+
+  /**
+   * add current recipe's ingredients into shopping list
+   * @param event
+   */
+  addIngredientsToShoppingList(event: MouseEvent) {
+    event.preventDefault()
+
+    this.ingredientService.addCurrentRecipe()
+  }
 }
